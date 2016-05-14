@@ -1,0 +1,9 @@
+.idea/*
+public/content/*
+apps/backend/cache/models/*.php
+apps/backend/cache/views/*.php
+apps/common/cache/models/*.php
+apps/common/cache/views/*.php
+apps/frontend/cache/models/*.php
+apps/frontend/cache/views/*.php
+
