@@ -1,5 +1,5 @@
 <?php namespace Common\Models;
 
-class Comment extends Model
+class Team extends Model
 {
 }

@@ -7,7 +7,6 @@ class User extends Model
     const STATUS_BANED = 3;
 
     public $id;
-    public $role_id;
     public $first_name;
     public $second_name;
     public $email;
