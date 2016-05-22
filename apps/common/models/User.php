@@ -6,7 +6,6 @@ class User extends Model
     const STATUS_INACTIVE = 2;
     const STATUS_BANED = 3;
 
-    public $id;
     public $first_name;
     public $second_name;
     public $email;
@@ -14,4 +13,8 @@ class User extends Model
     public $date_create;
     public $date_update;
     public $status = self::STATUS_INACTIVE;
+
+    public function initialize()
+    {
+    }
 }

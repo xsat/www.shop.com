@@ -2,4 +2,5 @@
 
 class Model extends \Phalcon\Mvc\Model
 {
+    public $id;
 }

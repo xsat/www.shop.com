@@ -1,5 +1,8 @@
 <?php namespace Common\Models;
 
-class Player extends Model
+class Player extends Item
 {
+    public function initialize()
+    {
+    }
 }

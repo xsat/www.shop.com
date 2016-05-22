@@ -1,6 +1,6 @@
 <?php namespace Common\Models;
 
-class Game extends Item
+class Image extends Model
 {
     public function initialize()
     {
