@@ -18,6 +18,8 @@ class Module
         $loader->registerNamespaces([
             $this->prefix . '\Controllers' => $this->dir . '/../controllers/',
             $this->prefix . '\Models' => $this->dir . '/../models/',
+            $this->prefix . '\Plugins' => $this->dir . '/../plugins/',
+            $this->prefix . '\Libraries' => $this->dir . '/../libraries/',
         ]);
         $loader->register();
     }
@@ -28,6 +30,9 @@ class Module
         $this->di->set('dispatcher', function() {
             $dispatcher = new \Phalcon\Mvc\Dispatcher();
             $dispatcher->setDefaultNamespace($this->prefix .  '\Controllers');
+            $eventsManager = new \Phalcon\Events\Manager();
+            $eventsManager->attach('dispatch:beforeExecuteRoute', new Plugins\Authorization\Authorization());
+            $dispatcher->setEventsManager($eventsManager);
             return $dispatcher;
         });
         $this->di->set('view', $this->setView(), true);
@@ -44,7 +49,6 @@ class Module
             '.volt' => $this->setVolt($view),
             '.phtml' => 'Phalcon\Mvc\View\Engine\Php',
         ]);
-
         return $view;
     }
 
@@ -55,14 +59,13 @@ class Module
             'compiledPath' => $this->dir . '/../cache/views/',
             'compiledSeparator' => '_',
         ]);
-
         return $volt;
     }
 
     protected function setModelsMetadata()
     {
-        return new \Phalcon\Mvc\Model\Metadata\Files(array(
+        return new \Phalcon\Mvc\Model\Metadata\Files([
             'metaDataDir' => $this->dir . '/../cache/models/'
-        ));
+        ]);
     }
 }
