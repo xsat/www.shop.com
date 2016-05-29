@@ -2,5 +2,9 @@
 
 interface ItemInterface
 {
-    public function render();
+    public function setModel($model);
+
+    public function renderValue();
+
+    public function renderTitle();
 }
