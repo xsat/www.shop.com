@@ -1,3 +1,13 @@
-<h1>This is the backend!</h1>
-
-<p>You're now flying with Phalcon.</p>
+<h1>
+    Users
+</h1>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            {{ grid.renderHeader() }}
+        </thead>
+        <tbody>
+            {{ grid.renderBody() }}
+        </tbody>
+    </table>
+</div>

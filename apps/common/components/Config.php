@@ -9,7 +9,7 @@ class Config extends \Phalcon\Config
 			'host'     => 'localhost',
 			'username' => 'root',
 			'password' => '',
-			'name'     => 'test',
+			'name'     => 'shop',
 		]];
 
 		parent::__construct($config);

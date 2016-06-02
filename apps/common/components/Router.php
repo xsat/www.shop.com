@@ -11,6 +11,14 @@ class Router extends \Phalcon\Mvc\Router
             'controller' => 'index',
             'action' => 'index'
         ]);
+
+        $this->add('/admin/test/:id', [
+            'module' => 'backend',
+            'controller' => 'index',
+            'action' => 'index',
+            'id' => 1,
+        ])->setName('test');
+
         $this->add('/index', [
             'module' => 'frontend',
             'controller' => 'index',

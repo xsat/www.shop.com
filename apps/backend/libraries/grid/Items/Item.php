@@ -1,4 +1,4 @@
-<?php namespace Backend\Libraries\Grid;
+<?php namespace Backend\Libraries\Grid\Items;
 
 class Item implements ItemInterface
 {
@@ -10,8 +10,10 @@ class Item implements ItemInterface
     {
         $this->field = $field;
 
-        if ($title == null) {
+        if ($title === null) {
             $this->title = $field;
+        } else {
+            $this->title = $title;
         }
     }
 
@@ -20,18 +22,18 @@ class Item implements ItemInterface
         $this->model = $model;
     }
 
-    public function renderValue()
+    public function getValue()
     {
         $method = 'get' . \Phalcon\Text::camelize($this->field);
 
         if (method_exists($this->model, $method)) {
-            return $this->model->{$method};
+            return $this->model->{$method}();
         }
 
         return $this->model->{$this->field};
     }
 
-    public function renderTitle()
+    public function getTitle()
     {
         return $this->title;
     }
