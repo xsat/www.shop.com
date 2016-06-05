@@ -2,18 +2,29 @@
 
 class Grid extends \Phalcon\Mvc\User\Component
 {
-    private $data;
+    private $paginator;
+    private $page;
     private $items = [];
 
     public function __construct($data, $items = [])
     {
-        $this->data = $data;
+        $this->paginator =  new Pagination([
+            'data'  => $data,
+            'limit' => 1,
+            'page'  => 3,
+        ]);
+        $this->page = $this->paginator->getPaginate();
         $this->items = $items;
+    }
+
+    public function renderFilters()
+    {
+
     }
 
     public function renderHeader()
     {
-        $html = '<tr class="active">';
+        $html = '<tr class="info">';
 
         foreach ($this->items as $item) {
             $html .= '<th>';
@@ -30,7 +41,7 @@ class Grid extends \Phalcon\Mvc\User\Component
     {
         $html = '';
 
-        foreach ($this->data as $model) {
+        foreach ($this->page->items as $model) {
             $html .= '<tr>';
 
             foreach ($this->items as $item) {
@@ -44,6 +55,24 @@ class Grid extends \Phalcon\Mvc\User\Component
             $html .= '</tr>';
         }
 
+        return $html;
+    }
+
+    public function renderPagination()
+    {
+        $html = '<nav>';
+        $html .= '<ul class="pagination">';
+
+        foreach ($this->paginator->getPages() as $page) {
+            $html .= '<li'.$page->getClass().'>';
+            $html .= '<a'.$page->getLink().'>';
+            $html .= $page->getTitle();
+            $html .= '</a>';
+            $html .= '</li>';
+        }
+
+        $html .= '</ul>';
+        $html .= '</nav>';
 
         return $html;
     }

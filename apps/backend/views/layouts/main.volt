@@ -15,14 +15,41 @@
         <![endif]-->
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="glyphicon glyphicon-align-justify"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">Project name</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <ul id="navbar" class="nav nav-sidebar navbar-collapse collapse">
+                                <li class="active">
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">1</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
                     {{ content() }}
                 </div>
             </div>
         </div>
-
         <script src="/js/jquery-1.12.4.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
     </body>
